@@ -9,11 +9,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class ExecutorServiceExample {
-	public static class WorkerThread implements Callable<String> {
+	public static class WorkerTask implements Callable<String> {
 
 		private String command;
 
-		public WorkerThread(String s) {
+		public WorkerTask(String s) {
 			this.command = s;
 		}
 
@@ -45,7 +45,7 @@ public class ExecutorServiceExample {
 		ExecutorService executorService = Executors.newFixedThreadPool(2);
 		List<Future<String>> futures = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
-			Future<String> future = executorService.submit(new WorkerThread("start" + i));
+			Future<String> future = executorService.submit(new WorkerTask("start" + i));
 			futures.add(future);
 		}
 

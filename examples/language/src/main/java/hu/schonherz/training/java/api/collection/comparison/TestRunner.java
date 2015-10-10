@@ -29,7 +29,7 @@ public class TestRunner {
 			Date date = new Date();
 
 			test.init(items);
-			test.delete(items.size()-1, items.size());
+			test.getElements(items.size() / 10);
 			
 			Date date2 = new Date();
 			long time = date2.getTime() - date.getTime();

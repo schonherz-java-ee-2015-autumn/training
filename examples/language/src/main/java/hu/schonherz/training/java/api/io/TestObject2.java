@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestObject2 {
-	static final String dataFile = "objectData";
+	static final String dataFile = "objectData2";
 	static List<ComparableItem> items;
 
 	public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class TestObject2 {
 		try {
 			out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)));
 			for (int i = 0; i < items.size(); i++) {
-				ComparableItem obj = items.get(0);
+				ComparableItem obj = items.get(i);
 				obj.writeObject(out);
 			}
 

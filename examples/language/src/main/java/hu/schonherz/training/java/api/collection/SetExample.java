@@ -16,11 +16,12 @@ public class SetExample {
 //
 //		setWithOrder2();
 //
-//		Set<Item> singelton = Collections.singleton(new Item("1", "a"));
-//		System.out.println(singelton.getClass() + " " + singelton);
-//
-//		Set<Item> empty = Collections.emptySet();
-//		System.out.println(singelton.getClass() + " " + empty);
+		Set<Item> singelton = Collections.singleton(new Item("1", "a"));
+		System.out.println(singelton.getClass() + " " + singelton);
+		singelton.add(new Item("3", "c"));
+
+		Set<Item> empty = Collections.emptySet();
+		System.out.println(singelton.getClass() + " " + empty);
 	}
 
 	private static void setWithOrder() {
@@ -49,7 +50,7 @@ public class SetExample {
 			}
 		};
 
-		TreeSet<Item> treeSet2 = new TreeSet<>(comparator);
+		TreeSet<Item> treeSet2 = new TreeSet<>();
 		treeSet2.add(new Item("1", "b"));
 		treeSet2.add(new Item("2", "b"));
 		treeSet2.add(new Item("1", "a"));
@@ -72,7 +73,7 @@ public class SetExample {
 
 		System.out.println(linkedHashSet.getClass() + " " + linkedHashSet);
 		
-		linkedHashSet.contains(new Item("1", "b"));
+		System.out.println(linkedHashSet.contains(new Item("1", "a")));
 
 	}
 }

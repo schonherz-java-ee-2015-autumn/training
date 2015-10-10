@@ -44,9 +44,7 @@ public class ComparableItem extends Item implements Comparable<ComparableItem>, 
 	public void readObject(ObjectInputStream stream) throws IOException {
 
 		setId(stream.readUTF());
-		setValue("" + stream.readInt()
-
-		);
+		setValue(stream.readUTF());
 
 	}
 }

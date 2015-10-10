@@ -22,25 +22,17 @@ public class Test {
 	}
 
 	private static void write() {
-		DataOutputStream out = null;
-		try {
-			out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)));
+		
+		try(DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)))){
 			for (int i = 0; i < prices.length; i++) {
 				out.writeDouble(prices[i]);
 				out.writeInt(units[i]);
 				out.writeUTF(descs[i]);
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (out != null) {
-				try {
-					out.close();
-				} catch (IOException e) {
-				}
-			}
-
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 	}
 
@@ -49,17 +41,16 @@ public class Test {
 		try {
 
 			in = new DataInputStream(new BufferedInputStream(new FileInputStream(dataFile)));
-			try {
-				while (true) {
-					double price = in.readDouble();
-					int unit = in.readInt();
-					String desc = in.readUTF();
-					System.out.format("You ordered %d" + " units of %s at $%.2f%n", unit, desc, price);
-				}
-			} catch (EOFException e) {
+			while (true) {
+				double price = in.readDouble();
+				int unit = in.readInt();
+				String desc = in.readUTF();
+				System.out.format("You ordered %d" + " units of %s at $%.2f%n", unit, desc, price);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (EOFException e) {
+		} catch (IOException e) {
+			//e.printStackTrace();
+			System.err.println(e.getMessage());
 		} finally {
 
 			if (in != null) {

@@ -9,11 +9,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceExample4 {
-	public static class WorkerThread implements Runnable {
+	public static class WorkerTask implements Runnable {
 
 		private String command;
 
-		public WorkerThread(String s) {
+		public WorkerTask(String s) {
 			this.command = s;
 		}
 
@@ -42,7 +42,7 @@ public class ExecutorServiceExample4 {
 		ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 
 		for (int i = 0; i < 10; i++) {
-			executorService.scheduleAtFixedRate(new WorkerThread("start" + i), 2l, 2l, TimeUnit.SECONDS);
+			executorService.scheduleAtFixedRate(new WorkerTask("start" + i), 2l, 2l, TimeUnit.SECONDS);
 
 		}
 

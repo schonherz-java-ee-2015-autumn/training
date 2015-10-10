@@ -31,7 +31,7 @@ public class TestObject {
 		try {
 			out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(dataFile)));
 			for (int i = 0; i < items.size(); i++) {
-				out.writeObject(items.get(0));
+				out.writeObject(items.get(i));
 			}
 
 		} catch (Exception e) {
