@@ -6,6 +6,9 @@ public class Addition implements BinaryOperation {
 	private Expression right;
 	
 	public Addition(Expression left, Expression right) {
+		if( left == null || right == null ) {
+			throw new NullPointerException("Both expressions must be not null");
+		}
 		this.left = left;
 		this.right = right;
 	}

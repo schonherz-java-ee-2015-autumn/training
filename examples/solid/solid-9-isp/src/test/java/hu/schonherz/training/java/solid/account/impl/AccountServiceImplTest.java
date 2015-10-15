@@ -112,6 +112,12 @@ public class AccountServiceImplTest {
 
     assertNotNull(result);
     assertEquals(result, account);
+    
+    verify(this.validator).validate(request);
+    verify(this.converter).convert(request);
+    verify(this.accountDAO).save(account);
+    
+    verifyNoMoreInteractions(this.validator, this.converter, this.accountDAO);
   }
 
 }
