@@ -9,7 +9,7 @@
 	<distributionManagement>
 		<site>
 			<id>http://192.168.1.23/</id>
-			<url>file:\\192.168.1.23\www\TraningProject\</url>
+			<url>file:\\192.168.1.23\www\TraningProject\ZA</url>
 		</site>
 	</distributionManagement>
 

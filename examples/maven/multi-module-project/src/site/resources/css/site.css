@@ -6,14 +6,3 @@ table.bodyTable th{
 	background-color: #69c;
 	color:black;
 }
-#leftColumn{
-	float:right;
-	    position: fixed;
-    right: 0;
-}
-
-#bodyColumn {
-    margin-right: 1.5em;
-    margin-right: 197px;
-	margin-left: 0;
-}
