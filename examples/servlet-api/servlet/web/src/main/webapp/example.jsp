@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -15,6 +16,10 @@
 			</jsp:include>
 		</li>
 		<li>
+		<%
+			
+			
+			%> 
 			<jsp:useBean id="date"  class="java.util.Date"></jsp:useBean>
 			<jsp:getProperty property="time" name="date" />
 			

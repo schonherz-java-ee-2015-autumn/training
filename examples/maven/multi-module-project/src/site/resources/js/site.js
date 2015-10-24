@@ -21,7 +21,7 @@ $( document ).ready(function() {
 		
 	$('#contentBox p a').parent().remove();
 		
-	$('#h3').addClass('ui-state-default ui-corner-all');
+	$('h3').addClass('ui-state-default ui-corner-all');
 	
 	$( "#contentBox" ).accordion(
 		{
@@ -42,13 +42,34 @@ $( document ).ready(function() {
 	});
 	$($("tr",value)[0]).remove();
 	});
-	 $('table').DataTable();
-	 
-	 $.each(  $('link') , function(  key,value ) {
+	 $('table').DataTable( {
+		"jQueryUI": true
+		});
+		
+		 $.each(  $('link') , function(  key,value ) {
 	var href=$(value).attr('href');
 	if(href.indexOf('smoothness')>0){
 	$(value).attr('href',href.replace('smoothness','start'));	
 	}
 	});
 	 
-});
+	 $('.xright').html('<input type="radio" id="radio1" name="radio"><label for="radio1">smoothness</label><input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">start</label>');
+
+	  $( ".xright" ).buttonset();
+	  
+	  function replaceStyle(fromv,tov){
+		$.each(  $('link') , function(  key,value ) {
+			var href=$(value).attr('href');
+			if(href.indexOf(fromv)>0){
+				$(value).attr('href',href.replace(fromv,tov));	
+			}
+		});
+	  }
+	  $('#radio1').click(function(){
+		replaceStyle('start','smoothness')
+	  });
+	  
+	    $('#radio2').click(function(){			
+		replaceStyle('smoothness','start')	
+	  });
+	 });

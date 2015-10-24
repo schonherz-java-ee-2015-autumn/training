@@ -63,6 +63,7 @@
 
 		<fmt:formatDate pattern="yyyy.MM.dd" value="${date}" var="formattedDate" />
 
+
 		<c:if test="${formattedDate eq currentFormattedDate}">
 			<font color="blue">${date} </font>
 		</c:if>
