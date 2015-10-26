@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="businessLogic"
+		class="com.epam.training.spring.xmlconfig.BusinessLogicImpl">
+		<property name="server" ref="networkResource"/>
+		<property name="database" ref="databaseResource"/>
+	</bean>
+	
+	<bean id="networkResource" class="com.epam.training.spring.xmlconfig.NetworkResourceImpl"/>
+	<bean id="databaseResource" class="com.epam.training.spring.xmlconfig.DataBaseResourceImpl"/>
+</beans>
