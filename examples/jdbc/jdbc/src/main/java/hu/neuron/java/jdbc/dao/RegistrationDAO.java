@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface RegistrationDAO {
 
-	public Long save(RegistrationDTO dto) throws Exception;
+	public Long save(RegistrationDTO dto) throws DAOException;
 
-	public void update(RegistrationDTO dto) throws Exception;
+	public int update(RegistrationDTO dto) throws DAOException;
 
-	public void delete(Long id) throws Exception;
+	public void delete(Long id) throws DAOException;
 
-	public RegistrationDTO find(Long id) throws Exception;
+	public RegistrationDTO find(Long id) throws DAOException;
 
-	public List<RegistrationDTO> findAll() throws Exception;
+	public List<RegistrationDTO> findAll() throws DAOException;
 
 }

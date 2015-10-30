@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class DAOTest extends TestCase {
@@ -34,7 +35,7 @@ public class DAOTest extends TestCase {
 //					throw new RuntimeException();
 //				}
 
-				dao.update(dto);
+				Assert.assertEquals(1, dao.update(dto));
 
 				instance.endTransaction();
 			} catch (Exception ex) {

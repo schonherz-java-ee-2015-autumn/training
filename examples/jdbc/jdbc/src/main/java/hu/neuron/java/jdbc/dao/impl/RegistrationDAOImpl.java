@@ -8,20 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.neuron.java.jdbc.PoolingDataSourceExample;
+import hu.neuron.java.jdbc.dao.DAOException;
 import hu.neuron.java.jdbc.dao.RegistrationDAO;
 import hu.neuron.java.jdbc.dto.RegistrationDTO;
 
-public class RegistrationDAOImpl implements RegistrationDAO {
-	Connection connection;
-
+public class RegistrationDAOImpl extends AbstractJdbcDAOImpl implements RegistrationDAO {
 	public RegistrationDAOImpl(Connection connection) {
-		this.connection = connection;
-
+		super(connection);
 	}
 
 	@Override
-	public Long save(RegistrationDTO dto) throws Exception {
+	public Long save(RegistrationDTO dto) throws DAOException {
 
 		Long rv = null;
 		PreparedStatement statement = null;
@@ -42,49 +39,49 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 				rv = rs.getLong(1);
 			}
 
+		} catch(SQLException e) {
+			throw new DAOException(e);
 		} finally {
 			try {
 				rs.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 			try {
 				statement.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 		}
 		return rv;
 	}
 
 	@Override
-	public void update(RegistrationDTO dto) throws Exception {
-
-		PreparedStatement statement = null;
-		try {
-			String sql = "UPDATE REGISTRATION set last=? ,first=?, age=? where id=?";
-			statement = connection.prepareStatement(sql);
-
-			statement.setString(1, dto.getLastName());
-			statement.setString(2, dto.getFirstName());
-			statement.setInt(3, dto.getAge());
-			statement.setLong(4, dto.getId());
-			int i = statement.executeUpdate();
-			System.out.println("executeUpdate: " + i);
-		} catch (Exception e) {
-			throw new Exception();
-		} finally {
-			try {
-				statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
+	public int update(final RegistrationDTO dto) throws DAOException {
+		String sql = "UPDATE REGISTRATION set last=? ,first=?, age=? where id=?";
+		
+		return updateInternally(sql, 
+				statement -> {
+					statement.setString(1, dto.getLastName());
+					statement.setString(2, dto.getFirstName());
+					statement.setInt(3, dto.getAge());
+					statement.setLong(4, dto.getId());
+				}
+		);
+//				new StatementPopulator() {
+//			
+//			@Override
+//			public void populate(PreparedStatement statement) throws SQLException {
+//				statement.setString(1, dto.getLastName());
+//				statement.setString(2, dto.getFirstName());
+//				statement.setInt(3, dto.getAge());
+//				statement.setLong(4, dto.getId());
+//			}
+//				);
 	}
 
 	@Override
-	public void delete(Long id) throws Exception {
+	public void delete(Long id) throws DAOException {
 		PreparedStatement statement = null;
 		try {
 			String sql = "DELETE FROM REGISTRATION where id=? ";
@@ -92,19 +89,19 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 			statement.setLong(1, id);
 			statement.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new DAOException(e);
 		} finally {
 
 			try {
 				statement.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 		}
 	}
 
 	@Override
-	public RegistrationDTO find(Long id) throws Exception {
+	public RegistrationDTO find(Long id) throws DAOException {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		RegistrationDTO rv = null;
@@ -123,22 +120,22 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DAOException(e);
 		} finally {
 			try {
 				resultSet.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 			try {
 				statement.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 
 		}
@@ -146,14 +143,14 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	}
 
 	@Override
-	public List<RegistrationDTO> findAll() throws Exception {
+	public List<RegistrationDTO> findAll() throws DAOException {
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		List<RegistrationDTO> rv = new ArrayList<RegistrationDTO>();
 		try {
 
-			String sql = "select * from REGISTRATION";
+			String sql = "select * from REGISTRATION order by id asc";
 			statement = connection.prepareStatement(sql);
 			resultSet = statement.executeQuery();
 
@@ -166,17 +163,17 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DAOException(e);
 		} finally {
 			try {
 				resultSet.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 			try {
 				statement.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new DAOException(e);
 			}
 
 		}

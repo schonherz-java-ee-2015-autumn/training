@@ -41,12 +41,12 @@ public class JdbcTransactionIT {
 				}
 				
 			} finally {
-				if( statement != null ) {
-					statement.close();
-				}
-				
 				if( resultSet != null ) {
 					resultSet.close();
+				}
+
+				if( statement != null ) {
+					statement.close();
 				}
 				
 				statement = null;
