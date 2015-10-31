@@ -1,6 +1,11 @@
 package com.epam.training.spring.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -37,5 +42,24 @@ public class ProductDAOImpl extends JdbcDaoSupport implements ProductDAO {
 		} catch(DataAccessException e) {
 			throw new PersistenceException(e);
 		}
+	}
+	
+	@Override
+	public List<ProductDTO> findAll() throws PersistenceException {
+		return getJdbcTemplate().query(
+			"select * from product",
+			new RowMapper<ProductDTO>() {
+				
+				@Override
+				public ProductDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+					ProductDTO dto = new ProductDTO();
+					
+					dto.setId(rs.getLong(1));
+					dto.setLongName(rs.getString(2));
+					dto.setShortName(rs.getString(3));
+					
+					return dto;
+				}
+			});
 	}
 }

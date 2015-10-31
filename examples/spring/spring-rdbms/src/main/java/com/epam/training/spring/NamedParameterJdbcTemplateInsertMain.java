@@ -1,8 +1,12 @@
 package com.epam.training.spring;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.util.Assert;
@@ -21,6 +25,12 @@ public class NamedParameterJdbcTemplateInsertMain {
 		Customer customer = new Customer("Tiffany", "White");
 		SqlParameterSource sqlParams =
 			new BeanPropertySqlParameterSource(customer);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("firstName", "Will");
+		map.put("lastName", "Smith");
+			
+		//sqlParams = new MapSqlParameterSource(map);
 		
 		int rows = template.update(
 			"insert into customer " 

@@ -1,5 +1,7 @@
 package com.epam.training.spring.service;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +30,15 @@ public class ProductServiceImpl implements ProductService {
 			throw new ServiceException(e);
 		}
 		
+	}
+	
+	@Override
+	public List<ProductDTO> findAll() throws ServiceException {
+		try {
+			return this.productDao.findAll();
+		} catch (PersistenceException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 }

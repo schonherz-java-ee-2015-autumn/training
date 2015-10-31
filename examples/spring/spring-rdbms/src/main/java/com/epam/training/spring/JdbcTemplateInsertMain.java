@@ -1,8 +1,12 @@
 package com.epam.training.spring;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.util.Assert;
 
 public class JdbcTemplateInsertMain {
@@ -22,12 +26,14 @@ public class JdbcTemplateInsertMain {
 			"Tiffany", "White");
 		Assert.isTrue(rows == 1);
 		
-		Integer count = template.queryForObject(
-			"select count(*) from customer " 
+		CustomerName customerName = template.queryForObject(
+			"select first_name, last_name from customer " 
 				+ "where first_name = ? and " 
-				+ "last_name = ?", Integer.class, 
+				+ "last_name = ?", (rs, count) -> {
+								return new CustomerName(rs.getString(1), rs.getString(2));
+						}, 
 			"Tiffany", "White");
-		System.out.println(count);
+		System.out.println(customerName);
 	}
 
 }
