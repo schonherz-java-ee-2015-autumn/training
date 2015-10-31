@@ -17,7 +17,12 @@ public class JavaConfigMain {
 				context.getBean("businessLogic", BusinessLogic.class);
 			
 		businessLogic.doBusiness("http://example.org/remotefile");
-    	
+
+		BusinessLogic businessLogic2 =
+				context.getBean("businessLogic2", BusinessLogic.class);
+			
+		businessLogic2.doBusiness("http://example.org/remotefile");
+		
     	System.out.println("Application ended");
 		
 	}

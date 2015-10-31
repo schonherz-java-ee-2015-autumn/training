@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="no">
+
+	<context:annotation-config/>
 
 	<bean id="businessLogic"
-		class="com.epam.training.spring.xmlconfig.BusinessLogicImpl">
-		<property name="server" ref="networkResource"/>
-		<property name="database" ref="databaseResource"/>
+		class="com.epam.training.spring.xmlconfig.BusinessLogicImpl"
+		init-method="initMethod"
+		p:server-ref="networkResource" p:database-ref="databaseResource">
+<!-- 		<property name="server" ref="networkResource"/> -->
+<!-- 		<property name="database" ref="databaseResource"/> -->
 	</bean>
 	
 	<bean id="networkResource" class="com.epam.training.spring.xmlconfig.NetworkResourceImpl"/>
 	<bean id="databaseResource" class="com.epam.training.spring.xmlconfig.DataBaseResourceImpl"/>
+	<bean id="databaseResource2" class="com.epam.training.spring.xmlconfig.DataBaseResourceImpl" autowire-candidate="false"/>
 </beans>

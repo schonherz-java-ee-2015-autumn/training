@@ -34,6 +34,7 @@ public class App {
       e.printStackTrace(System.err);
     }
 
+    appFactory.close();
   }
 
 }

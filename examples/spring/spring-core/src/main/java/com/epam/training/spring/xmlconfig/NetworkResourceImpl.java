@@ -1,8 +1,12 @@
 package com.epam.training.spring.xmlconfig;
 
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.DisposableBean;
+
 import com.epam.training.spring.common.NetworkResource;
 
-public class NetworkResourceImpl implements NetworkResource {
+public class NetworkResourceImpl implements NetworkResource, DisposableBean {
 	
 	private String[] contents =
 		new String[] {"network content 1", "network content 2"};
@@ -17,6 +21,11 @@ public class NetworkResourceImpl implements NetworkResource {
 	@Override
 	public void uploadFileContent(String path, String content) {
 		System.out.println("I am using network");
+	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("network resource destroy");
 	}
 	
 }

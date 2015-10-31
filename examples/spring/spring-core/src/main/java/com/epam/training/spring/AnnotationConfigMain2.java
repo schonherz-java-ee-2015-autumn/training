@@ -10,7 +10,9 @@ public class AnnotationConfigMain2 {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		
-		ApplicationContext context = new AnnotationConfigApplicationContext("com.epam.training.spring.annotationconfig");
+		ApplicationContext context =
+				new AnnotationConfigApplicationContext(
+						"com.epam.training.spring.annotationconfig");
 		
 		BusinessLogic businessLogic =
 				context.getBean("businessLogic", BusinessLogic.class);
