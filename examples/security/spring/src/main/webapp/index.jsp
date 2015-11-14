@@ -15,7 +15,7 @@
 
 	</sec:authorize>
 
-	<sec:authorize access="hasRole('MANGER')">
+	<sec:authorize access="hasRole('MANAGER')">
 
 		<h2>Hello manger!</h2>
 
@@ -28,7 +28,6 @@
 
 
 	UserName:
-	<sec:authentication property="principal.username" />
 	<br /> 
 	Password:
 	<sec:authentication property="credentials" />

@@ -65,10 +65,12 @@
 			<form-error-page>/public/login.jsp?error=true</form-error-page>
 		</form-login-config>
 	</login-config>
+
 <!-- 	<login-config> -->
-<!-- 		<auth-method>BASIC</auth-method> -->
-<!-- 		<realm-name>CustomRrealm</realm-name> -->
+<!-- 		<auth-method>DIGEST</auth-method> -->
+<!-- 		<realm-name>UserDatabase</realm-name> -->
 <!-- 	</login-config> -->
+	
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
     	<location>/error/general-exception.jsp</location>
