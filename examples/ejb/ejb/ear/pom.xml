@@ -48,6 +48,7 @@
 				<configuration>
 					<version>6</version>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<applicationName>ear</applicationName>
 					<modules>
 						<ejbModule>
 							<groupId>hu.neuron.java</groupId>
