@@ -6,6 +6,10 @@
 	<persistence-unit name="hu.neuron.java.jpa">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<non-jta-data-source>java:comp/env/jdbc/TestJPADB</non-jta-data-source>
+		<class>hu.schonherz.java.entities.BaseEntity</class>
+		<class>hu.schonherz.java.entities.Message</class>
+		<class>hu.schonherz.java.entities.Role</class>
+		<class>hu.schonherz.java.entities.User</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.show_sql" value="false" />

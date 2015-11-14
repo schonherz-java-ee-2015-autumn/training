@@ -21,6 +21,22 @@
 	</h:head>
 
 	<h:body>
+		<div id="menu">
+			<h:form>
+				<h3 style="margin-top: 0">Plain Menu</h3>
+				<p:menu>
+					<p:submenu label="Users">
+						<p:menuitem value="Registration" url="/public/registration.xhtml"
+							update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Login" url="/public/login.xhtml"
+							update="messages" icon="ui-icon-disk" />
+						<p:menuitem value="Logout" url="/logout" update="messages"
+							icon="ui-icon-disk" />
+					</p:submenu>
+
+				</p:menu>
+			</h:form>
+		</div>
 		<div id="contentDiv">
 			<div class="ui-wrap-content" style="height: 100%;">
 				<div id="content">

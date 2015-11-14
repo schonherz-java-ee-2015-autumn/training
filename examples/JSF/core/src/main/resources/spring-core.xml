@@ -14,9 +14,9 @@
    		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
-	<context:component-scan base-package="hu.neuron.java.core" />
+	<context:component-scan base-package="hu.schonherz.java" />
 
-	<jpa:repositories base-package="hu.neuron.java.core.dao"
+	<jpa:repositories base-package="hu.schonherz.java.dao"
 		repository-impl-postfix="Impl" />
 
 	<bean id="entityManagerFactory"

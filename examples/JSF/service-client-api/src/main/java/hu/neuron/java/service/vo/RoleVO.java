@@ -7,7 +7,8 @@ public class RoleVO implements Serializable {
 	private static final long serialVersionUID = -8403753397412273249L;
 
 	private Long id;
-	private String Name;
+
+	private String name;
 
 	public Long getId() {
 		return id;
@@ -18,16 +19,16 @@ public class RoleVO implements Serializable {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "RoleVO [id=" + id + ", Name=" + Name + "]";
+		return "RoleVO [id=" + id + ", name=" +name + "]";
 	}
 
 }

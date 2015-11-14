@@ -7,6 +7,7 @@
 	xmlns:sec="http://www.springframework.org/security/tags">
 	<ui:define name="pageTitle">#{out.hello}</ui:define>
 	<ui:define name="content">
-		<h2>#{helloWorldBean.message}</h2>
+		<h:outputText value="#{helloWorldBean.message}"></h:outputText>
+		<h:outputText value="#{out.demo}"></h:outputText>
 	</ui:define>
 </ui:composition>
