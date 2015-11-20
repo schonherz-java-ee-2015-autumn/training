@@ -12,6 +12,8 @@ public class UserVO implements Serializable {
 	private String password;
 	private List<RoleVO> roles;
 
+	private byte[] image;
+
 	public Long getId() {
 		return id;
 	}
@@ -42,6 +44,14 @@ public class UserVO implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 }

@@ -17,4 +17,6 @@ public interface UserService {
 
 	public void saveUser(UserVO selectedUser);
 
+	public UserVO findById(Long id);
+
 }
