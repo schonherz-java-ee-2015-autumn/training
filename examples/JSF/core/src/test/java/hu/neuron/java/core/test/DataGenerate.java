@@ -86,6 +86,9 @@ public class DataGenerate {
 				user.getRoles().add(userRole);
 
 				users.add(user);
+				System.out.println(user.getUsername());
+				
+				userDao.save(users);
 
 			}
 
