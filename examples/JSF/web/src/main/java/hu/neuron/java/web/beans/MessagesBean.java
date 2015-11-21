@@ -1,18 +1,16 @@
 package hu.neuron.java.web.beans;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
-import hu.neuron.java.service.MessageService;
-import hu.neuron.java.service.UserService;
+import hu.neuron.java.service.MessageServiceLocal;
+import hu.neuron.java.service.UserServiceLocal;
 import hu.neuron.java.service.vo.MessageVO;
 import hu.neuron.java.service.vo.UserVO;
 
@@ -25,11 +23,11 @@ public class MessagesBean {
 	@ManagedProperty(value = "#{userSessionBean}")
 	private UserSessionBean userSessionBean;
 
-	@ManagedProperty(value = "#{userService}")
-	private UserService userService;
+	@EJB
+	private UserServiceLocal userService;
 
-	@ManagedProperty(value = "#{messageService}")
-	private MessageService messageService;
+	@EJB
+	private MessageServiceLocal messageService;
 
 	private List<UserVO> users;
 
@@ -82,6 +80,38 @@ public class MessagesBean {
 		this.fromUser = fromUser;
 	}
 
+	public UserSessionBean getUserSessionBean() {
+		return userSessionBean;
+	}
+
+	public void setUserSessionBean(UserSessionBean userSessionBean) {
+		this.userSessionBean = userSessionBean;
+	}
+
+	public UserServiceLocal getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserServiceLocal userService) {
+		this.userService = userService;
+	}
+
+	public MessageServiceLocal getMessageService() {
+		return messageService;
+	}
+
+	public void setMessageService(MessageServiceLocal messageService) {
+		this.messageService = messageService;
+	}
+
+	public List<UserVO> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserVO> users) {
+		this.users = users;
+	}
+
 	public UserVO getSelectedUser() {
 		return selectedUser;
 	}
@@ -98,36 +128,5 @@ public class MessagesBean {
 		this.content = content;
 	}
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-
-	public UserSessionBean getUserSessionBean() {
-		return userSessionBean;
-	}
-
-	public void setUserSessionBean(UserSessionBean userSessionBean) {
-		this.userSessionBean = userSessionBean;
-	}
-
-	public MessageService getMessageService() {
-		return messageService;
-	}
-
-	public void setMessageService(MessageService messageService) {
-		this.messageService = messageService;
-	}
-
-	public List<UserVO> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserVO> users) {
-		this.users = users;
-	}
 
 }

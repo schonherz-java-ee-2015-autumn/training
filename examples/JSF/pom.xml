@@ -37,6 +37,7 @@
 		<module>core</module>
 		<module>service</module>
 		<module>service-client-api</module>
+		<module>ear</module>
 	</modules>
 
 
@@ -50,6 +51,40 @@
 				<scope>test</scope>
 			</dependency>
 
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>6.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>5.0</version>
+			</dependency>
+			<!-- HSQL -->
+			<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>2.3.2</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.primefaces.themes</groupId>
+				<artifactId>humanity</artifactId>
+				<version>1.0.10</version>
+			</dependency>
+
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
@@ -61,6 +96,7 @@
 				<artifactId>spring-tx</artifactId>
 				<version>4.1.6.RELEASE</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
@@ -87,28 +123,19 @@
 				<version>4.1.6.RELEASE</version>
 			</dependency>
 
-			<!-- JDBC -->
 			<dependency>
 				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
+				<artifactId>spring-orm</artifactId>
 				<version>4.1.6.RELEASE</version>
 			</dependency>
 
 			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>1.4</version>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>1.8.0.RELEASE</version>
 			</dependency>
 
 
-			<!-- HSQL -->
-			<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>2.3.2</version>
-				<scope>provided</scope>
-			</dependency>
-			<!-- Spring Security -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-web</artifactId>
@@ -154,21 +181,19 @@
 				<version>2.4.0.RELEASE</version>
 			</dependency>
 
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.17</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.6.1</version>
-			</dependency>
+
 
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>1.6.1</version>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>5.5.1</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.springframework.webflow</groupId>
+				<artifactId>spring-faces</artifactId>
+				<version>2.4.0.RELEASE</version>
 			</dependency>
 
 			<dependency>
@@ -178,90 +203,6 @@
 				<scope>provided</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>jstl</artifactId>
-				<version>1.2</version>
-			</dependency>
-
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>jsp-api</artifactId>
-				<version>2.0</version>
-				<scope>provided</scope>
-			</dependency>
-
-
-			<dependency>
-				<groupId>org.hibernate.javax.persistence</groupId>
-				<artifactId>hibernate-jpa-2.0-api</artifactId>
-				<version>1.0.1.Final</version>
-
-			</dependency>
-
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-core</artifactId>
-				<version>4.1.9.Final</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>4.1.9.Final</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hibernate.common</groupId>
-				<artifactId>hibernate-commons-annotations</artifactId>
-				<version>4.0.1.Final</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>4.3.0.Final</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>4.1.6.RELEASE</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.data</groupId>
-				<artifactId>spring-data-jpa</artifactId>
-				<version>1.8.0.RELEASE</version>
-			</dependency>
-
-
-			<dependency>
-				<groupId>com.sun.faces</groupId>
-				<artifactId>jsf-api</artifactId>
-				<version>2.2.4</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sun.faces</groupId>
-				<artifactId>jsf-impl</artifactId>
-				<version>2.2.4</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.glassfish.web</groupId>
-				<artifactId>el-impl</artifactId>
-				<version>2.2.1-b05</version>
-			</dependency>
-			<dependency>
-				<groupId>org.primefaces</groupId>
-				<artifactId>primefaces</artifactId>
-				<version>5.2</version>
-			</dependency>
-			<dependency>
-				<groupId>org.primefaces.themes</groupId>
-				<artifactId>humanity</artifactId>
-				<version>1.0.10</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

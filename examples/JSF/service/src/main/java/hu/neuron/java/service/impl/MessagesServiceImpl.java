@@ -2,19 +2,29 @@ package hu.neuron.java.service.impl;
 
 import java.util.List;
 
+import javax.ejb.Local;
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.interceptor.Interceptors;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
 import hu.neuron.java.service.MessageConverter;
-import hu.neuron.java.service.MessageService;
+import hu.neuron.java.service.MessageServiceLocal;
+import hu.neuron.java.service.MessageServiceRemote;
 import hu.neuron.java.service.vo.MessageVO;
 import hu.schonherz.java.dao.MessageDao;
 
-@Service("messageService")
-@Transactional(propagation = Propagation.REQUIRED)
-public class MessagesServiceImpl implements MessageService {
+@Stateless(mappedName = "MessageService")
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+@Interceptors(SpringBeanAutowiringInterceptor.class)
+@Local(MessageServiceLocal.class)
+@Remote(MessageServiceRemote.class)
+public class MessagesServiceImpl implements MessageServiceLocal, MessageServiceRemote {
+
 	@Autowired
 	MessageDao messageDao;
 

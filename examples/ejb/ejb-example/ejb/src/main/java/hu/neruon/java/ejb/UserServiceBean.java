@@ -20,10 +20,9 @@ import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
  * Session Bean implementation class UserServiceBean
  */
 
-@Stateless(mappedName="UserServiceBean")
-@Interceptors(SpringBeanAutowiringInterceptor.class)
-public class UserServiceBean implements UserServiceBeanRemote,
-		UserServiceBeanLocal {
+@Stateless(mappedName = "UserServiceBean")
+@Interceptors({ SpringBeanAutowiringInterceptor.class, SimpleInterceptor.class })
+public class UserServiceBean implements UserServiceBeanRemote, UserServiceBeanLocal {
 	@Autowired
 	UserDAO userDAO;
 

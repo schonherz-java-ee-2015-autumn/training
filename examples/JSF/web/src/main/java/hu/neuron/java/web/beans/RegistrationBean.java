@@ -2,25 +2,23 @@ package hu.neuron.java.web.beans;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import hu.neuron.java.service.UserService;
+import hu.neuron.java.service.UserServiceLocal;
 import hu.neuron.java.service.vo.UserVO;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped
 public class RegistrationBean implements Serializable {
 
-	@ManagedProperty("#{userService}")
-
-	private UserService userService;
+	@EJB
+	private UserServiceLocal userService;
 
 	private static final long serialVersionUID = 1L;
 
@@ -81,11 +79,11 @@ public class RegistrationBean implements Serializable {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public UserService getUserService() {
+	public UserServiceLocal getUserService() {
 		return userService;
 	}
 
-	public void setUserService(UserService userService) {
+	public void setUserService(UserServiceLocal userService) {
 		this.userService = userService;
 	}
 

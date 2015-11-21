@@ -4,7 +4,7 @@ import java.util.List;
 
 import hu.neuron.java.service.vo.MessageVO;
 
-public interface MessageService {
+public interface MessageServiceRemote {
 
 	void send(MessageVO messageVO);
 
