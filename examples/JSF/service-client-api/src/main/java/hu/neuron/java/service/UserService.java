@@ -13,6 +13,8 @@ public interface UserService {
 	public List<UserVO> getUserList(int i, int pageSize, String sortField, int dir, String filter,
 			String filterColumnName);
 
+	public List<UserVO> getUsers();
+	
 	public Integer getUserCount();
 
 	public void saveUser(UserVO selectedUser);

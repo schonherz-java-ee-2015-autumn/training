@@ -27,8 +27,13 @@
 			rel="stylesheet" />
 		<h:outputStylesheet library="default" name="css/custom.css"
 			rel="stylesheet" />
+			
+				<h:outputStylesheet library="default" name="css/bootstrap-social.css"
+			rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans'
 			rel='stylesheet' type='text/css' />
+			
+			
 
 		<h:outputScript library="primefaces" name="jquery/jquery.js"
 			target="head" />
@@ -88,8 +93,8 @@
 
 				<div class="inner-text">
 					<p:outputLabel
-						value="#{userSessionBean.userVO.firstName} #{userSessionBean.userVO.lastName}"></p:outputLabel>
-					<br /> <small>#{userSessionBean.userVO.position} </small>
+						value="#{userSessionBean.userVO.username}"></p:outputLabel>
+					<br /> 
 				</div>
 			</p:outputPanel></li>
 

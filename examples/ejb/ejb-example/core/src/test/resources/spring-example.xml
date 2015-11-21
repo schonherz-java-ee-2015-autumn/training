@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd" 
+
+	default-lazy-init="true">
+
+
+	<bean id="helloWordBeanXML" class="hu.neuron.java.core.example.HelloWordBeanXML">
+
+	</bean>
+
+<bean id="helloWordBeanXML2" class="hu.neuron.java.core.example.HelloWordBeanXML">
+
+	</bean>
+	
+	<bean id="helloWordBeanXMLPrototype" class="hu.neuron.java.core.example.HelloWordBeanXML"
+		scope="prototype">
+
+	</bean>
+
+	<bean id="helloWordRunnerXML" class="hu.neuron.java.core.example.HelloWordRunnerXML" lazy-init="true">
+		<property name="helloWordBeanXML">
+		<ref bean="helloWordBeanXML" />
+		</property>
+	</bean>
+
+	<bean id="helloWordRunnerConstXML" class="hu.neuron.java.core.example.HelloWordRunnerConstXML">
+		<constructor-arg name="helloWordBeanXML" ref="helloWordBeanXML" />
+	</bean>
+
+
+
+	<bean id="helloWordRunnerXMLFromStaticFactory"
+		class="hu.neuron.java.core.example.HelloWordRunnerStaticFactory"
+		factory-method="createInstance" />
+
+
+	<bean id="helloWordRunnerFactory" class="hu.neuron.java.core.example.HelloWordRunnerFactory">
+		<property name="helloWordBeanXML">
+			<ref bean="helloWordBeanXML" />
+		</property>
+	</bean>
+
+	<!-- the bean to be created via the factory bean -->
+	<bean id="helloWordRunnerXMLFromFactory" factory-bean="helloWordRunnerFactory"
+		factory-method="createInstance" />
+
+	<context:annotation-config />
+
+
+</beans>

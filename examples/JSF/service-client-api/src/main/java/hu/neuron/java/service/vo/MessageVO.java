@@ -14,6 +14,8 @@ public class MessageVO implements Serializable {
 	private UserVO sendUser;
 
 	private UserVO targetUser;
+	
+	private String content;
 
 	public Long getId() {
 		return id;
@@ -51,6 +53,14 @@ public class MessageVO implements Serializable {
 	public String toString() {
 		return "MessageVO [id=" + id + ", sendDate=" + sendDate + ", sendUser=" + sendUser + ", targetUser="
 				+ targetUser + "]";
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }

@@ -1,4 +1,4 @@
-﻿/*=============================================================
+/*=============================================================
     Authour URI: www.binarytheme.com
     License: Commons Attribution 3.0
 
@@ -108,7 +108,7 @@
 .chat-widget-name-right {
     color: #d51111;
     margin-top: 30px;
-    margin-right: 60px;
+  
     font-size:16px;
     text-align:right;
     font-weight:900;
@@ -116,6 +116,13 @@
     
 
 }
+
+.chat-widget-name-right .media {
+   
+    
+
+}
+
 
 /*==============================================
         Reviews Styles

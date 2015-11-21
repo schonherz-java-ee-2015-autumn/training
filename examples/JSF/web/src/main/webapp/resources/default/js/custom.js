@@ -21,7 +21,9 @@
             METIS MENU 
             ======================================*/
 
-            $('#main-menu').metisMenu();
+            $('#main-menu').metisMenu({
+                activeClass: 'active-menu'
+            });
 
         },
 
@@ -59,23 +61,14 @@
             })
         },
         wizard_fun: function () {
-            /*====================================
-            //horizontal wizrd code section
-             ======================================*/
-            $(function () {
-                $("#wizard").steps({
-                    headerTag: "h2",
-                    bodyTag: "section",
-                    transitionEffect: "slideLeft"
-                });
-            });
+            
             /*====================================
             //vertical wizrd  code section
             ======================================*/
             $(function () {
                 $("#wizardV").steps({
                     headerTag: "h2",
-                    bodyTag: "section",
+                    bodyTag: "div",
                     transitionEffect: "slideLeft",
                     stepsOrientation: "vertical"
                 });
@@ -93,3 +86,9 @@
        
     });
 }(jQuery));
+
+function ext1() {
+    this.cfg.seriesDefaults.rendererOptions = {
+        barWidth : 30
+    };
+}

@@ -85,4 +85,10 @@ public class UserServiceImpl implements UserService {
 		return UserConverter.toVo(userDao.findOne(id));
 	}
 
+	@Override
+	public List<UserVO> getUsers() {
+		
+		return UserConverter.toVo(userDao.findAll());
+	}
+
 }
