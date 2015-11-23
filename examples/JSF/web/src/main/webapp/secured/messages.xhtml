@@ -51,15 +51,14 @@
 					<div class="panel-footer">
 
 						<h:form>
-
+ 							<p:poll interval="3"  update="messages"  oncomplete="$('#chat-widget').prop('scrollTop' ,$('#chat-widget').prop('scrollHeight'));"/>
 							<div class="input-group">
 								<p:inputText value="#{messagesBean.content}" id="input"
 									styleClass="form-control"></p:inputText>
-								<span class="input-group-btn"> <p:commandButton
-										style=" padding: 0px !important;" update="input"
+								<span class="input-group-btn"> 
+								<p:commandButton update="input,messages" styleClass="btn btn-success"
 										actionListener="#{messagesBean.send}"
-										oncomplete="$('#chat-widget').prop('scrollTop' ,$('#chat-widget').prop('scrollHeight'));"
-										 value="Send"></p:commandButton>
+										oncomplete="$('#chat-widget').prop('scrollTop' ,$('#chat-widget').prop('scrollHeight'));" value="Send"></p:commandButton>
 								</span>
 							</div>
 						</h:form>
