@@ -37,12 +37,7 @@ public class MessagesBean {
 
 	@PostConstruct
 	public void init() {
-		fromUser = getUserSessionBean().getUserVO();
-		if (fromUser == null) {
-			getUserSessionBean().init();
-			fromUser = getUserSessionBean().getUserVO();
-		}
-
+		fromUser = userSessionBean.getUserVO();
 		users = getUserService().getUsers();
 		users.remove(users.indexOf(fromUser));
 	}

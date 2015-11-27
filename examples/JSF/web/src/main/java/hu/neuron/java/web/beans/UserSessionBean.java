@@ -21,7 +21,7 @@ public class UserSessionBean {
 
 	private UserVO userVO;
 
-	@PostConstruct
+
 	public void init() {
 
 		try {
@@ -41,6 +41,7 @@ public class UserSessionBean {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -58,6 +59,7 @@ public class UserSessionBean {
 	}
 
 	public UserVO getUserVO() {
+		init() ;
 		return userVO;
 	}
 }

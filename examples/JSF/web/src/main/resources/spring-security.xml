@@ -14,7 +14,7 @@
 			access="hasRole('MANAGER')" />
 		<security:intercept-url pattern="/secured/admin/*"
 			requires-channel="https" access="hasRole('ADMIN')" />
-		<security:form-login login-page="/public/login.xhtml"
+		<security:form-login login-page="/public/login.xhtml" 
 			login-processing-url="/login" default-target-url="/index.xhtml"
 			authentication-failure-url="/public/login.xhtml?error=1"
 			username-parameter="j_username" password-parameter="j_password" />
@@ -22,6 +22,7 @@
 			logout-success-url="/index.xhtml" />
 		<security:remember-me key="key" 
 			remember-me-parameter="remember-me" token-validity-seconds="86400" />
+			
 	</security:http>
 
 	<security:authentication-manager>
