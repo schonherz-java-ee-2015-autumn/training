@@ -20,9 +20,7 @@ import org.apache.log4j.Logger;
 
 import hu.neuron.java.service.queue.MessageReciverSyncRemote;
 
-/**
- * Message-Driven Bean implementation class for: MessageSubscriberA1
- */
+
 @Singleton(name = "MessageReciverSync", mappedName = "MessageReciverSync")
 @Remote(MessageReciverSyncRemote.class)
 public class MessageReciverSync implements MessageReciverSyncRemote {

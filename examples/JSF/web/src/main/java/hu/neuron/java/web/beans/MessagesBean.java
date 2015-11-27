@@ -11,6 +11,8 @@ import javax.faces.bean.ViewScoped;
 
 import hu.neuron.java.service.MessageServiceLocal;
 import hu.neuron.java.service.UserServiceLocal;
+import hu.neuron.java.service.queue.BadWordSenderRemote;
+import hu.neuron.java.service.queue.vo.BadWordMessageRequest;
 import hu.neuron.java.service.vo.MessageVO;
 import hu.neuron.java.service.vo.UserVO;
 
@@ -28,6 +30,9 @@ public class MessagesBean {
 
 	@EJB
 	private MessageServiceLocal messageService;
+
+	@EJB(mappedName = "BadWordSender", name = "BadWordSender")
+	private BadWordSenderRemote badWordSenderRemote;
 
 	private List<UserVO> users;
 
@@ -50,6 +55,16 @@ public class MessagesBean {
 
 			messageVO.setContent(getContent());
 			getMessageService().send(messageVO);
+			BadWordMessageRequest message = new BadWordMessageRequest();
+			message.setMessages(content);
+			message.setUserId(fromUser.getId());
+			message.setTargetUserId(selectedUser.getId());
+			try {
+				badWordSenderRemote.sendRequest(message);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			content = "";
 		}
 	}
@@ -122,6 +137,5 @@ public class MessagesBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
 
 }

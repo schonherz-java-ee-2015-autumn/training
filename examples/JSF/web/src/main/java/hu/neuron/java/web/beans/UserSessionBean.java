@@ -21,7 +21,7 @@ public class UserSessionBean {
 
 	private UserVO userVO;
 
-
+	@PostConstruct
 	public void init() {
 
 		try {
@@ -59,7 +59,7 @@ public class UserSessionBean {
 	}
 
 	public UserVO getUserVO() {
-		init() ;
+		init();
 		return userVO;
 	}
 }
