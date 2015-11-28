@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserServiceLocal, UserServiceRemote {
 	}
 
 	@Override
-	public void registrationUser(UserVO userVO) throws Exception {
+	public UserVO registrationUser(UserVO userVO) throws Exception {
 
 		User user = userDao.save(UserConverter.toEntity(userVO));
 		List<Role> roles = user.getRoles();
@@ -56,7 +56,9 @@ public class UserServiceImpl implements UserServiceLocal, UserServiceRemote {
 
 		user.setRoles(roles);
 
-		userDao.save(user);
+		user = userDao.save(user);
+
+		return UserConverter.toVo(user);
 
 	}
 
@@ -84,7 +86,8 @@ public class UserServiceImpl implements UserServiceLocal, UserServiceRemote {
 	}
 
 	@Override
-	public void saveUser(UserVO selectedUser) {
+	public UserVO saveUser(UserVO selectedUser) {
+		return selectedUser;
 		// TODO Auto-generated method stub
 
 	}

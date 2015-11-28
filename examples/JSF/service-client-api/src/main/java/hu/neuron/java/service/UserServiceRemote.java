@@ -8,7 +8,7 @@ public interface UserServiceRemote {
 
 	public UserVO findUserByName(String name) throws Exception;
 
-	public void registrationUser(UserVO userVO) throws Exception;
+	public UserVO registrationUser(UserVO userVO) throws Exception;
 
 	public List<UserVO> getUserList(int i, int pageSize, String sortField, int dir, String filter,
 			String filterColumnName);
@@ -17,7 +17,7 @@ public interface UserServiceRemote {
 	
 	public Integer getUserCount();
 
-	public void saveUser(UserVO selectedUser);
+	public UserVO saveUser(UserVO selectedUser);
 
 	public UserVO findById(Long id);
 

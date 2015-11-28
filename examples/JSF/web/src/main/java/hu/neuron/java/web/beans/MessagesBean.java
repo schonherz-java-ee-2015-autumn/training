@@ -16,7 +16,7 @@ import hu.neuron.java.service.queue.vo.BadWordMessageRequest;
 import hu.neuron.java.service.vo.MessageVO;
 import hu.neuron.java.service.vo.UserVO;
 
-@ManagedBean
+@ManagedBean(name = "messagesBean")
 @ViewScoped
 public class MessagesBean {
 

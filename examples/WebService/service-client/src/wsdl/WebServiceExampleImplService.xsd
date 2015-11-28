@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.8-b13937 svn-revision#13942.--><xsd:schema targetNamespace="http://web.java.neuron.hu/" xmlns:ns0="http://web.java.neuron.hu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="echo">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="echoResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="echo" type="ns0:echo"/>
+  <xsd:element name="echoResponse" type="ns0:echoResponse"/>
+</xsd:schema>
