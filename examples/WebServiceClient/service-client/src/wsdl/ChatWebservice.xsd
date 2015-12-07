@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.10-b140319.1121 svn-revision#7b34660d6bc70e587e8ec81a17e4d76af68816a6.--><xsd:schema targetNamespace="http://webservice.service.java.neuron.hu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://webservice.service.java.neuron.hu/">
+  <xsd:complexType name="messageSendRequestVO">
+    <xsd:sequence>
+      <xsd:element name="content" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fromUserId" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="toUserId" type="xsd:long" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getUsers"/>
+  <xsd:complexType name="userListResponseVO">
+    <xsd:sequence>
+      <xsd:element name="users" type="ns0:userVO" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="roleVO">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="sendMessage">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="ns0:messageSendRequestVO" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getUsersResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:userListResponseVO" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="sendMessageResponse"/>
+  <xsd:complexType name="userVO">
+    <xsd:sequence>
+      <xsd:element name="id" type="xsd:long" minOccurs="0"/>
+      <xsd:element name="image" type="xsd:base64Binary" minOccurs="0"/>
+      <xsd:element name="password" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="roles" type="ns0:roleVO" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xsd:element name="username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getUsers" type="ns0:getUsers"/>
+  <xsd:element name="sendMessage" type="ns0:sendMessage"/>
+  <xsd:element name="getUsersResponse" type="ns0:getUsersResponse"/>
+  <xsd:element name="sendMessageResponse" type="ns0:sendMessageResponse"/>
+</xsd:schema>

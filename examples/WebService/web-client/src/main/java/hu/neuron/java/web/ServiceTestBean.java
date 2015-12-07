@@ -34,7 +34,7 @@ public class ServiceTestBean implements Serializable {
 		WebServiceExample exampleImpl = exampleImplService
 				.getWebServiceExampleImplPort();
 
-		echo = exampleImpl.echo(message);
+		echo = exampleImpl.echoService(message);
 	}
 
 	public String getMessage() {
